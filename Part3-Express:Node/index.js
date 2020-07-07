@@ -10,6 +10,8 @@ const errorHandler = (error, request, response, next) => {
 
   if(error.name === 'CastError') {
     return response.status(400).send({ error: 'Malformatted ID' })
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json( {error: error.message} )
   }
 
   next(error)
@@ -38,7 +40,7 @@ app.get('/api/notes/:id', (request, response, next) => {
       response.status(404).end()
     }
   })
-  .catch(error => next(error))
+    .catch(error => next(error))
 })
 
 app.delete('/api/notes/:id', (request, response, next) => {
@@ -64,14 +66,8 @@ app.put('/api/notes/:id', (request, response, next) => {
     .catch(error => next(error))
 })
 
-app.post('/api/notes', (request, response) => {
+app.post('/api/notes', (request, response, next) => {
   const body = request.body
-
-  if(body.content === undefined) {
-    return response.status(400).json({
-      error: 'Content missing'
-    })
-  }
 
   const note = new Note({
     content: body.content,
@@ -79,15 +75,14 @@ app.post('/api/notes', (request, response) => {
     date: new Date(),
   })
 
-  note.save().then(savedNote => {
-    response.json(savedNote)
-  })
+  note.save()
+    .then(savedNote => savedNote.toJSON)
+    .then(savedAndFormattedNote => {
+      response.json(savedAndFormattedNote)
+    })
+    .catch(error => next(error))
 })
 
-const generateId = () => {
-  const maxId = notes.length > 0 ? Math.max(...notes.map(n => n.id)) : 0
-  return maxId + 1
-}
 
 const PORT = process.env.PORT
 app.listen(PORT, () => {

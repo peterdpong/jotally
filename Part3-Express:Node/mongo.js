@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
 if(process.argv.length < 3) {
   console.log("Please provide a password as an argument: node mongo.js <password>")
@@ -17,7 +17,7 @@ const noteSchema = new mongoose.Schema({
   important: Boolean
 })
 
-const Note = mongoose.model('Note', noteSchema)
+const Note = mongoose.model("Note", noteSchema)
 
 // const note = new Note({
 //   content: "HTML is easy",
