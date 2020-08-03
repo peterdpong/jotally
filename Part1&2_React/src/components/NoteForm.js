@@ -21,9 +21,9 @@ const NoteForm = ({createNote}) => {
     <div>
       <h2>Create a new note</h2>
 
-      <form onSubmit={onSubmit}>
+      <form onSubmit={addNote}>
         <input
-          value={value}
+          value={newNote}
           onChange={handleChange}
         />
         <button type="submit">Save</button>
@@ -31,3 +31,5 @@ const NoteForm = ({createNote}) => {
     </div>
   )
 }
+
+export default NoteForm
