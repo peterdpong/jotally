@@ -1,20 +1,45 @@
-h1 {
-  color: green;
-  font-style: italic;
+.note {
+  background-color: #F1D302;
+  list-style: none;
+  color: #0A100D;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 500;
+  width: 200px;
+  padding: 20px;
+  border-radius: 5px;
+  margin: 10px;
 }
 
-.note {
-  color: grey;
-  padding-top: 3px;
-  font-size: 15px;
+.noteList {
+  display: inline-flex;
+  margin: 0;
+  padding: 0;
 }
 
 .error {
-  color: red;
+  color: #A22C29;
   background: lightgrey;
   font-size: 20px;
   border-style: solid;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+}
+
+.title {
+  color: #0A100D;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #0A100D;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 500;
+}
+
+.text {
+  color: #0A100D;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 400;
 }

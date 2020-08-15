@@ -21,15 +21,16 @@ const Notification = ( {message} ) => {
 
 const Footer = () => {
   const footerStyle = {
-    color: 'green',
-    fontStyle: 'italic',
-    fontSize: 16
+    color: '#0A100D',
+    fontFamily: 'Catamaran',
+    fontSize: 16,
+    fontWeight: 700
   }
   
   return (
     <div style={footerStyle}>
       <br/>
-      <em>Note App - Peter D'Pong</em>
+      <p>Note Web App - <a href="https://peterdpong.github.io/">Peter D'Pong</a></p>
     </div>
   )
 }
@@ -140,20 +141,20 @@ const App = () => {
 
       {user === null ? loginForm() : 
         <div>
-          <p>{user.name} Logged-In</p>
+          <p className="subtitle">{user.name} Logged In</p>
           {noteForm()}
         </div>
         
       }
 
-      <h1>Notes</h1>
+      <h1 className="title">Notes</h1>
 
       <div>
         <button onClick={() => setShowAll(!showAll)}>
           Show {showAll ? 'Important' : 'All'}
         </button>
       </div>
-      <ul>
+      <ul className="noteList">
         {notesToShow.map(note => 
           <Note 
           key={note.id} 
