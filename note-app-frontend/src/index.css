@@ -1,3 +1,17 @@
+body {
+  background-color: #353535;
+  color: white;
+}
+
+.inline {
+  display: flex;
+}
+
+.login-note-form {
+  display: flex;
+  margin-left: auto;
+}
+
 .note {
   background-color: #F1D302;
   list-style: none;
@@ -8,10 +22,10 @@
   padding: 20px;
   border-radius: 5px;
   margin: 10px;
+  display: inline-block;
 }
 
 .noteList {
-  display: inline-flex;
   margin: 0;
   padding: 0;
 }
@@ -26,20 +40,48 @@
   margin-bottom: 10px;
 }
 
+.button {
+  background-color: #4F5D75;
+  color: white;
+  border-radius: 5px;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 10px;
+  transition-duration: 500ms;
+}
+
+.button:hover {
+  background-color: white;
+  color: #4F5D75;
+  border-radius: 5px;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 700;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  padding: 10px;
+}
+
+.links, .links:hover, .links:visited {
+  color: white;
+}
+
 .title {
-  color: #0A100D;
   font-family: 'Catamaran', sans-serif;
   font-weight: 700;
 }
 
 .subtitle {
-  color: #0A100D;
   font-family: 'Catamaran', sans-serif;
   font-weight: 500;
 }
 
 .text {
-  color: #0A100D;
   font-family: 'Catamaran', sans-serif;
   font-weight: 400;
 }

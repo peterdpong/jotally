@@ -19,22 +19,6 @@ const Notification = ( {message} ) => {
   )
 }
 
-const Footer = () => {
-  const footerStyle = {
-    color: '#0A100D',
-    fontFamily: 'Catamaran',
-    fontSize: 16,
-    fontWeight: 700
-  }
-  
-  return (
-    <div style={footerStyle}>
-      <br/>
-      <p>Note Web App - <a href="https://peterdpong.github.io/">Peter D'Pong</a></p>
-    </div>
-  )
-}
-
 const App = () => {
   const [notes, setNotes] = useState([])
   const [newNote, setNewNote] = useState('a new note')
@@ -139,18 +123,18 @@ const App = () => {
     <div>
       <Notification message={errorMessage}/>
 
-      {user === null ? loginForm() : 
-        <div>
-          <p className="subtitle">{user.name} Logged In</p>
-          {noteForm()}
-        </div>
-        
-      }
-
-      <h1 className="title">Notes</h1>
+      <div className="inline">
+        <h1 className="title">Notes</h1>
+        {user === null ? loginForm() : 
+          <div className="login-note-form">
+            <p className="subtitle">{user.name} currently Logged In</p>
+            {noteForm()}
+          </div>
+        }
+      </div>
 
       <div>
-        <button onClick={() => setShowAll(!showAll)}>
+        <button className="button" onClick={() => setShowAll(!showAll)}>
           Show {showAll ? 'Important' : 'All'}
         </button>
       </div>
@@ -163,7 +147,9 @@ const App = () => {
           />)}
       </ul>
       
-      <Footer/>
+      <div>
+        <p className="title">Note Web App - <a className="links" href="https://peterdpong.github.io/">Peter D'Pong</a></p>
+      </div>
     </div>
   )
 }
