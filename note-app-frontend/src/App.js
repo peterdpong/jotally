@@ -120,23 +120,26 @@ const App = () => {
   )
 
   return (
-    <div>
+    <div className="app">
       <Notification message={errorMessage}/>
 
-      <div className="inline">
-        <h1 className="title">Notes</h1>
-        {user === null ? loginForm() : 
-          <div className="login-note-form">
-            <p className="subtitle">{user.name} currently Logged In</p>
-            {noteForm()}
-          </div>
-        }
+      <div className="navbar">
+          <img className="logo" src="./res/pencil-svg.svg" alt="Logo"/>
+          <h1 className="title">Jotally</h1>
       </div>
 
-      <div>
+      <div className="optionsbar">
         <button className="button" onClick={() => setShowAll(!showAll)}>
           Show {showAll ? 'Important' : 'All'}
         </button>
+        <div className="flex-right">
+          {user === null ? loginForm() : 
+            <div>
+              <p className="subtitle">{user.name} currently Logged In</p>
+              {noteForm()}
+            </div>
+          }
+        </div>
       </div>
       <ul className="noteList">
         {notesToShow.map(note => 
@@ -147,8 +150,12 @@ const App = () => {
           />)}
       </ul>
       
-      <div>
-        <p className="title">Note Web App - <a className="links" href="https://peterdpong.github.io/">Peter D'Pong</a></p>
+      <div className="footer">
+        <p className="title">Created by <a className="links" href="https://peterdpong.github.io/">Peter D'Pong</a></p>
+        
+        <div className="flex-right">
+          <p className="title"><a className="links" href="https://github.com/peterdpong/jotally">Source</a></p>
+        </div>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-# Note Web App
+# Jotally
 A note taking web app. Frontend build on React, and Backend build on Node, Express, and MongoDB.
 
 ### Deployed Example
