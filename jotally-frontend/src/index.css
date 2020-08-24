@@ -2,7 +2,7 @@
 Color Palette
   BG: #141414
   Primary: #FCA311
-  Secondary: #14213D
+  Secondary: #256EFF
   Main Text: #FFFFFF
   Secondary Text: #E5E5E5
 */
@@ -93,6 +93,7 @@ body {
   text-decoration: none;
   border: none;
   padding: 10px;
+  box-shadow: 0 0 25px rgb(37,110,255,0.5);
 }
 
 .button-dark {
