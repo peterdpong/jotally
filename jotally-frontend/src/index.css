@@ -58,13 +58,14 @@ body {
 }
 
 .error {
-  color: #A22C29;
-  background: lightgrey;
-  font-size: 20px;
-  border-style: solid;
+  color: #E5E5E5;
+  background: #c24e4c;
+  font-size: 15px;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  font-family: 'Catamaran', sans-serif;
+  font-weight: 500;
 }
 
 .button {
@@ -79,6 +80,7 @@ body {
   border: none;
   padding: 10px;
   margin: 10px;
+  outline: none;
   transition-duration: 350ms;
 }
 
@@ -93,6 +95,7 @@ body {
   text-decoration: none;
   border: none;
   padding: 10px;
+  outline: none;
   box-shadow: 0 0 25px rgb(37,110,255,0.5);
 }
 
@@ -102,6 +105,22 @@ body {
 
 .button-dark:hover {
   color: #CAAF02;
+}
+
+.formTextbox {
+  outline: none;
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  box-sizing: border-box;
+  padding: 10px;
+  margin: 10px;
+  border: 3px solid #E5E5E5;
+  transition-duration: 350ms;
+}
+
+.formTextbox:focus {
+  border: 3px solid #256EFF;
 }
 
 .footer {

@@ -44,12 +44,6 @@ const App = () => {
       setNotes(initialNotes)
     })
   }, [])
-  console.log("render", notes.length, "notes")
-
-  const handleNoteChange = (event) => {
-    console.log(event.target.value)
-    setNewNote(event.target.value)
-  }
 
   const addNote = (noteObject) => {
     noteFormRef.current.toggleVisibility()
@@ -94,7 +88,7 @@ const App = () => {
       setUsername('')
       setPassword('')
     } catch (exception) {
-      setErrorMessage('Wrong Credentials')
+      setErrorMessage('Wrong username or password.')
       setTimeout(() => {
         setErrorMessage(null)
       }, 5000)
