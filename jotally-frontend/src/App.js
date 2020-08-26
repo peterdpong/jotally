@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
 import noteService from './services/notes'
-import Note from './components/Note'
-import loginService from './services/login'
 import LoginForm from './components/LoginForm'
 import NoteForm from './components/NoteForm'
 import Toggable from './components/Toggable'
 
+import NotesList from './components/NotesList'
+
+import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 const Notification = ( {message} ) => {
   if(message == null){
@@ -72,39 +73,6 @@ const App = () => {
     })
   }
 
-  const handleLogin = async (event) => {
-    event.preventDefault()
-    try {
-      const user = await loginService.login({
-        username, password
-      })
-
-      window.localStorage.setItem(
-        'loggedNoteappUser', JSON.stringify(user)
-      )
-
-      noteService.setToken(user.token)
-      setUser(user)
-      setUsername('')
-      setPassword('')
-    } catch (exception) {
-      setErrorMessage('Wrong username or password.')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
-    }
-  }
-
-  const loginForm = () => (
-    <Toggable buttonLabel='Login'>
-      <LoginForm
-        username={username}
-        password={password}
-        handleUsernameChange={({ target }) => setUsername(target.value)}
-        handlePasswordChange={({ target }) => setPassword(target.value)}
-        handleSubmit={handleLogin}/>
-    </Toggable>
-  )
 
   const noteForm = () => (
     <Toggable buttonLabel='New Note' ref={noteFormRef}>
@@ -114,44 +82,59 @@ const App = () => {
   )
 
   return (
-    <div className="app">
-      <Notification message={errorMessage}/>
+    <Router>
+      <div className="app">
+        <Notification message={errorMessage}/>
 
-      <div className="navbar">
-          <img className="logo" src="./res/pencil-svg.svg" alt="Logo"/>
-          <h1 className="title">Jotally</h1>
-      </div>
-
-      <div className="optionsbar">
-        <button className="button" onClick={() => setShowAll(!showAll)}>
-          Show {showAll ? 'Important' : 'All'}
-        </button>
-        <div className="flex-right">
-          {user === null ? loginForm() : 
-            <div>
-              <p className="subtitle">{user.name} currently Logged In</p>
-              {noteForm()}
-            </div>
-          }
-        </div>
-      </div>
-      <ul className="noteList">
-        {notesToShow.map(note => 
-          <Note 
-          key={note.id} 
-          note={note}
-          toggleImportance={() => toggleImportance(note.id)}
-          />)}
-      </ul>
-      
-      <div className="footer">
-        <p className="title">Created by <a className="links" href="https://peterdpong.github.io/">Peter D'Pong</a></p>
+        <Link to="/">
+          <div className="navbar">
+              <img className="logo" src="./res/pencil-svg.svg" alt="Logo"/>
+              <h1 className="title">Jotally</h1>
+          </div>
+        </Link>
         
-        <div className="flex-right">
-          <p className="title"><a className="links" href="https://github.com/peterdpong/jotally">Source</a></p>
+
+        <div className="optionsbar">
+          <button className="button" onClick={() => setShowAll(!showAll)}>
+            Show {showAll ? 'Important' : 'All'}
+          </button>
+          <div className="flex-right">
+            <Link to="/login">
+              <button className="button">Login</button>
+            </Link>
+          </div>
+        </div>
+        
+
+        <Switch>
+          <Route path="/login">
+            <LoginForm
+            username={username}
+            password={password}
+            setUsername={setUsername}
+            setPassword={setPassword}
+            setUser={setUser}
+            setErrorMessage={setErrorMessage}
+            />
+          </Route>
+
+          <Route path="/" render={() => 
+            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance}/> 
+            : <h3 className="subtitle">You aren't currently logged in. Log in to see your saved notes.</h3>}>
+            
+          </Route>
+        </Switch>
+
+        
+        <div className="footer">
+          <p className="title">Created by <a className="links" href="https://peterdpong.github.io/">Peter D'Pong</a></p>
+          
+          <div className="flex-right">
+            <p className="title"><a className="links" href="https://github.com/peterdpong/jotally">Source</a></p>
+          </div>
         </div>
       </div>
-    </div>
+    </Router>
   )
 }
 
