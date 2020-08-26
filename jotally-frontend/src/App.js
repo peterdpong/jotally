@@ -41,9 +41,11 @@ const App = () => {
   }, [])
 
   useEffect(() => {
-    noteService.getAll().then(initialNotes => {
-      setNotes(initialNotes)
-    })
+    if(user){
+      noteService.getAll().then(initialNotes => {
+        setNotes(initialNotes)
+      })
+    }
   }, [])
 
   const addNote = (noteObject) => {
@@ -119,7 +121,7 @@ const App = () => {
           </Route>
 
           <Route path="/" render={() => 
-            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance}/> 
+            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance} setNotes={setNotes}/> 
             : <h3 className="subtitle">You aren't currently logged in. Log in to see your saved notes.</h3>}>
             
           </Route>
