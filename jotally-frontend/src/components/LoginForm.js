@@ -45,7 +45,7 @@ const LoginForm = ({
       setErrorMessage('Wrong username or password.')
       setTimeout(() => {
         setErrorMessage(null)
-      }, 5000)
+      }, 2500)
     } 
   }
 

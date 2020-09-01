@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import noteService from './services/notes'
 import LoginForm from './components/LoginForm'
 import NoteForm from './components/NoteForm'
+import RegisterForm from './components/RegisterForm'
 import Toggable from './components/Toggable'
 
 import NotesList from './components/NotesList'
@@ -104,6 +105,9 @@ const App = () => {
             <Link to="/login">
               <button className="button">Login</button>
             </Link>
+            <Link to="/register">
+              <button className="button">Register</button>
+            </Link>
           </div>
         </div>
         
@@ -116,6 +120,12 @@ const App = () => {
             setUsername={setUsername}
             setPassword={setPassword}
             setUser={setUser}
+            setErrorMessage={setErrorMessage}
+            />
+          </Route>
+
+          <Route path="/register">
+            <RegisterForm
             setErrorMessage={setErrorMessage}
             />
           </Route>
