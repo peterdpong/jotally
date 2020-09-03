@@ -1,32 +1,46 @@
 import React, { useState } from 'react'
 
 const NoteForm = ({createNote}) => {
-  const [newNote, setNewNote] = useState('')
-
-  const handleChange = (event) => {
-    setNewNote(event.target.value)
-  }
+  const [newNoteDesc, setNewNoteDesc] = useState('')
+  const [newNoteTitle, setNewNoteTitle] = useState('')
 
   const addNote = (event) => {
     event.preventDefault()
     
     createNote({
-      content: newNote,
+      title: newNoteTitle,
+      content: newNoteDesc,
       important: false
     })
 
-    setNewNote('')
+    setNewNoteDesc('')
+    setNewNoteTitle('')
   }
   return (
     <div className='formDiv'>
-      <h2 className="title">Create a new note</h2>
+      <h2 className="title">Add a new note</h2>
 
       <form onSubmit={addNote}>
-        <input
-          value={newNote}
-          onChange={handleChange}
-        />
-        <button type="submit">Save</button>
+        <div>
+          <label className="subtitle" for="username">Title</label>
+          <input
+            className="formTextbox"
+            id="NoteTitle"
+            value={newNoteTitle}
+            onChange={({ target }) => setNewNoteTitle(target.value)}
+          />
+        </div>
+        
+        <div>
+          <label className="subtitle" for="username">Note Contents</label>
+          <textarea 
+            rows="4" cols="25" 
+            className="formTextbox textbox-large"
+            id="NoteDesc"
+            value={newNoteDesc}
+            onChange={({ target }) => setNewNoteDesc(target.value)}></textarea>
+        </div>
+        <button className="button" type="submit">Save</button>
       </form>
     </div>
   )

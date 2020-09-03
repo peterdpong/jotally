@@ -50,7 +50,6 @@ const App = () => {
   }, [])
 
   const addNote = (noteObject) => {
-    noteFormRef.current.toggleVisibility()
     noteService.createNote(noteObject).then(returnedNote => {
       setNotes(notes.concat(returnedNote))
       setNewNote("")})
@@ -101,6 +100,7 @@ const App = () => {
           <button className="button" onClick={() => setShowAll(!showAll)}>
             Show {showAll ? 'Important' : 'All'}
           </button>
+          <NoteForm createNote={addNote}/>
           <div className="flex-right">
             <Link to="/login">
               <button className="button">Login</button>

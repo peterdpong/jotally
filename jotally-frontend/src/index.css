@@ -129,6 +129,16 @@ a {
   background-color: #1b1b1b;
 }
 
+.textbox-large {
+  resize: unset;
+}
+
+.formDiv {
+  background-color: #202020;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 .footer {
   position: fixed;
   bottom: 0;
