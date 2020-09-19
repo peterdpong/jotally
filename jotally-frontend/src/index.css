@@ -62,14 +62,15 @@ a {
 }
 
 .error {
-  color: #E5E5E5;
-  background: #c24e4c;
+  color: #5a2625;
+  background: #df6866;
   font-size: 15px;
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
   font-family: 'Catamaran', sans-serif;
   font-weight: 500;
+  border: 2px solid #723231;
 }
 
 .button {
@@ -98,7 +99,6 @@ a {
   text-align: center;
   text-decoration: none;
   border: none;
-  padding: 10px;
   outline: none;
   box-shadow: 0 0 25px rgb(37,110,255,0.5);
 }
@@ -137,6 +137,8 @@ a {
   background-color: #202020;
   padding: 10px;
   border-radius: 5px;
+  max-width: 450px;
+  margin: auto;
 }
 
 .footer {
@@ -157,6 +159,7 @@ a {
   font-weight: 700;
   color: white;
   text-decoration: none;
+  margin-bottom: 5px;
 }
 
 .subtitle {

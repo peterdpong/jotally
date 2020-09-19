@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const NoteForm = ({createNote}) => {
   const [newNoteDesc, setNewNoteDesc] = useState('')
   const [newNoteTitle, setNewNoteTitle] = useState('')
+  
 
   const addNote = (event) => {
     event.preventDefault()
@@ -21,7 +22,7 @@ const NoteForm = ({createNote}) => {
       <h2 className="title">Add a new note</h2>
 
       <form onSubmit={addNote}>
-        <div>
+        {/* <div>
           <label className="subtitle" for="username">Title</label>
           <input
             className="formTextbox"
@@ -29,10 +30,10 @@ const NoteForm = ({createNote}) => {
             value={newNoteTitle}
             onChange={({ target }) => setNewNoteTitle(target.value)}
           />
-        </div>
+        </div> */}
         
         <div>
-          <label className="subtitle" for="username">Note Contents</label>
+          <label className="subtitle" for="username">Note</label>
           <textarea 
             rows="4" cols="25" 
             className="formTextbox textbox-large"

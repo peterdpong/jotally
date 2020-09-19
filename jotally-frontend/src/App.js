@@ -75,14 +75,6 @@ const App = () => {
     })
   }
 
-
-  const noteForm = () => (
-    <Toggable buttonLabel='New Note' ref={noteFormRef}>
-      <NoteForm
-        createNote={addNote}/>
-    </Toggable>
-  )
-
   return (
     <Router>
       <div className="app">
@@ -100,7 +92,6 @@ const App = () => {
           <button className="button" onClick={() => setShowAll(!showAll)}>
             Show {showAll ? 'Important' : 'All'}
           </button>
-          <NoteForm createNote={addNote}/>
           <div className="flex-right">
             <Link to="/login">
               <button className="button">Login</button>
@@ -131,7 +122,7 @@ const App = () => {
           </Route>
 
           <Route path="/" render={() => 
-            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance} setNotes={setNotes}/> 
+            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance} setNotes={setNotes} createNote={addNote}/> 
             : <h3 className="subtitle">You aren't currently logged in. Log in to see your saved notes.</h3>}>
             
           </Route>
