@@ -1,11 +1,9 @@
 # Jotally
-A note taking web app. Frontend build on React, and Backend build on Node, Express, and MongoDB.
+A simple note taking web app. Frontend build on React, and Backend build on Node, Express, and MongoDB.
 
 
 ### Deployed Example
-[View Live on Heroku](http://jotally.herokuapp.com/)
-
-> Currently missing some features as working on refactoring.
+[View Live deployed Heroku](http://jotally.herokuapp.com/)
 
 ### Frontend
 Run ```npm install``` to download dependencies before running
