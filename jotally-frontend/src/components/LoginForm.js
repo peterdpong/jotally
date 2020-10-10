@@ -32,7 +32,7 @@ const LoginForm = ({
       })
   
       window.localStorage.setItem(
-        'loggedNoteappUser', JSON.stringify(user)
+        'loggedJotallyUser', JSON.stringify(user)
       )
   
       noteService.setToken(user.token)

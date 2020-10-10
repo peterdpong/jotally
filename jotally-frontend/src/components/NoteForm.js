@@ -33,8 +33,7 @@ const NoteForm = ({createNote}) => {
         </div> */}
         
         <div>
-          <label className="subtitle" for="username">Note</label>
-          <textarea 
+          <textarea
             rows="4" cols="25" 
             className="formTextbox textbox-large"
             id="NoteDesc"

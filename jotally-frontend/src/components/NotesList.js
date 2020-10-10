@@ -3,7 +3,7 @@ import Note from './Note'
 import noteService from '../services/notes'
 import NoteForm from './NoteForm'
 
-const NotesList = ({ notesToShow, toggleImportance, setNotes, createNote}) => {
+const NotesList = ({ notesToShow, toggleImportance, setNotes, createNote, deleteNote}) => {
 
   useEffect(() => {
     noteService.getAll().then(initialNotes => {
@@ -22,6 +22,7 @@ const NotesList = ({ notesToShow, toggleImportance, setNotes, createNote}) => {
             key={note.id} 
             note={note}
             toggleImportance={() => toggleImportance(note.id)}
+            deleteNote={() => deleteNote(note.id)}
             />)}
       </ul>
     </div>

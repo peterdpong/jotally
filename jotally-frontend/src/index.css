@@ -41,6 +41,7 @@ a {
 
 .flex-right {
   margin-left: auto;
+  display: inline;
 }
 
 .note {
@@ -50,7 +51,7 @@ a {
   font-family: 'Catamaran', sans-serif;
   font-weight: 500;
   width: 200px;
-  padding: 20px;
+  padding: 15px;
   border-radius: 5px;
   margin: 10px;
   display: inline-block;
@@ -90,8 +91,6 @@ a {
 }
 
 .button:hover {
-  background-color: white;
-  color: #256EFF;
   border-radius: 5px;
   font-family: 'Catamaran', sans-serif;
   font-weight: 700;
@@ -103,12 +102,20 @@ a {
   box-shadow: 0 0 25px rgb(37,110,255,0.5);
 }
 
-.button-dark {
-  background-color: #CAAF02;
+.button-note {
+  background-color: transparent;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  box-shadow: none;
+  padding: none;
+  margin: none;
 }
 
-.button-dark:hover {
-  color: #CAAF02;
+.button-note:hover {
+  background-color: #d8bc05;
+  border-radius: 50%;
+  box-shadow: none;
 }
 
 .formTextbox, .formTextbox:enabled{
@@ -159,7 +166,8 @@ a {
   font-weight: 700;
   color: white;
   text-decoration: none;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .subtitle {

@@ -33,7 +33,7 @@ const App = () => {
   const noteFormRef = useRef()
 
   useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('loggedNoteappUser')
+    const loggedUserJSON = window.localStorage.getItem('loggedJotallyUser')
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
@@ -75,6 +75,17 @@ const App = () => {
     })
   }
 
+  const deleteNote = (id) => {
+    noteService.deleteNote(id).then(returnedNote => {
+      setNotes(notes.filter(n => n.id !== id))
+    })
+  }
+
+  const logOut = () => {
+    localStorage.removeItem('loggedJotallyUser')
+    setUser(null)
+  }
+
   return (
     <Router>
       <div className="app">
@@ -91,15 +102,27 @@ const App = () => {
         <div className="optionsbar">
           <button className="button" onClick={() => setShowAll(!showAll)}>
             Show {showAll ? 'Important' : 'All'}
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-urgent" width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#FFFFFF" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M8 16v-4a4 4 0 0 1 8 0v4" />
+              <path d="M3 12h1m8 -9v1m8 8h1m-15.4 -6.4l.7 .7m12.1 -.7l-.7 .7" />
+              <rect x="6" y="16" width="12" height="4" rx="1" />
+            </svg>
           </button>
-          <div className="flex-right">
-            <Link to="/login">
-              <button className="button">Login</button>
-            </Link>
-            <Link to="/register">
-              <button className="button">Register</button>
-            </Link>
-          </div>
+
+
+          {user ? <div className="flex-right"><span className="text">{user.name} currently logged in.</span> <button className="button" onClick={() => logOut()}>Log out</button></div> : 
+            <div className="flex-right">
+              <Link to="/login">
+                <button className="button">Login</button>
+              </Link>
+              <Link to="/register">
+                <button className="button">Register</button>
+              </Link>
+            </div>
+          
+          }
+          
         </div>
         
 
@@ -122,7 +145,7 @@ const App = () => {
           </Route>
 
           <Route path="/" render={() => 
-            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance} setNotes={setNotes} createNote={addNote}/> 
+            user ? <NotesList notesToShow={notesToShow} toggleImportance={toggleImportance} setNotes={setNotes} createNote={addNote} deleteNote={deleteNote}/> 
             : <h3 className="subtitle">You aren't currently logged in. Log in to see your saved notes.</h3>}>
             
           </Route>
